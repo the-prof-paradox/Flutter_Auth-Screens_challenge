@@ -79,7 +79,70 @@ class SignUpScreen extends StatelessWidget {
             ),
             SizedBox(height: 15),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                if (sUserNameEditingController.text == '' ||
+                    sPasswordEditingController.text == '') {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Alert!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Username or Password missing!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                } else if (sPasswordEditingController.text.length < 8) {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Alert!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Password must be atleast 8 characters long!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                } else {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Success!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Account Created!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                }
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -101,7 +164,14 @@ class SignUpScreen extends StatelessWidget {
             ),
             Or(),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              body: LoginScreen(),
+                            )));
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -171,7 +241,70 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 15),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                if (lUserNameEditingController.text == '' ||
+                    lPasswordEditingController.text == '') {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Alert!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Username or Password missing!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                } else if (lPasswordEditingController.text.length < 8) {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Alert!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Password must be atleast 8 characters long!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                } else {
+                  showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Ok'))
+                            ],
+                            title: Text(
+                              'Success!',
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Text(
+                              'Logged in successfully!',
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                }
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -193,7 +326,14 @@ class LoginScreen extends StatelessWidget {
             ),
             Or(),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              body: SignUpScreen(),
+                            )));
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -250,7 +390,7 @@ class MyTextField extends StatelessWidget {
             width: 20,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.4,
+            width: MediaQuery.of(context).size.width * 0.6,
             child: TextField(
               cursorWidth: 0.0,
               obscureText: this.obscureText,
